@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">Convertidor de Temperatura</string>
+    <string name="convert">Convertir</string>
+    <string name="ftoc">Fahrenheit a Celsius</string>
+    <string name="ctof">Celsius a Fahrenheit</string>
+    <string name="entertemperature">Ingrese la temperatura</string>
+    <string name="result">Resultado de la conversión</string>
+
+
+</resources>
