@@ -1,4 +1,5 @@
 package com.example.convertidortemperatura
+import android.content.Intent
 import android.os.Bundle
 import android.widget.Button
 import android.widget.RadioButton
@@ -28,7 +29,7 @@ class MainActivity : AppCompatActivity() {
         val radioButtonFtoC = findViewById<RadioButton>(R.id.radioButton)
         val radioButtonCtoF = findViewById<RadioButton>(R.id.radioButton2)
         val convertirButton = findViewById<Button>(R.id.convertirButton)
-        val textViewResult = findViewById<TextView>(R.id.textView3)
+        val buttonAbout = findViewById<Button>(R.id.buttonAbout)
 
         buttonMinus.setOnClickListener {
             currentTemperature -= 1
@@ -50,16 +51,22 @@ class MainActivity : AppCompatActivity() {
             val result: Double
             val resultText: String
             if (selectedRadioButtonId == radioButtonFtoC.id) {
-                // Convertir grados Fahrenheit a grados Celsius
                 result = (currentTemperature - 32) * 5 / 9
                 resultText = String.format("%.2f grados Fahrenheit equivalen a %.2f grados Celsius", currentTemperature, result)
             } else {
-                // Convertir grados Celsius a grados Fahrenheit
                 result = (currentTemperature * 9 / 5) + 32
                 resultText = String.format("%.2f grados Celsius equivalen a %.2f grados Fahrenheit", currentTemperature, result)
             }
 
-            textViewResult.text = resultText
+            // Launch ResultActivity with the result
+            val intent = Intent(this, ResultActivity::class.java)
+            intent.putExtra("conversionResult", resultText)
+            startActivity(intent)
+        }
+
+        buttonAbout.setOnClickListener {
+            val intent = Intent(this, AboutActivity::class.java)
+            startActivity(intent)
         }
     }
 }
